@@ -1,0 +1,38 @@
+package basic;
+public class setMatrixZero {
+	public static void set(int b[][],int row ,int col) {
+		for(int i=0;i<b[0].length;i++) {
+			b[row][i]=0;
+		}
+		for(int i=0;i<b.length;i++) {
+			b[i][col]=0;
+		}
+	}
+	public static void main(String []args) {
+		int [][]a= {{1,1,1,1},
+					{1,0,1,1},
+					{1,1,1,1},
+					{0,1,1,1}};
+		int row=a.length,col=a[0].length;
+		int b[][]=new int [row][col];
+		for(int i=0;i<b.length;i++) {
+			for(int j=0;j<b[0].length;j++) {
+				b[i][j]=a[i][j];
+			}
+		}
+		for(int i=0;i<a.length;i++) {
+			for(int j=0;j<a[0].length;j++) {
+				if(a[i][j]==0) {
+					set(b,i,j);
+				}
+			}
+		}
+		System.out.println("The elements after setting are:");
+		for(int i=0;i<b.length;i++) {
+			for(int j=0;j<b[0].length;j++) {
+				System.out.print(b[i][j]+" ");
+			}
+			System.out.println();
+		}
+	}
+}
