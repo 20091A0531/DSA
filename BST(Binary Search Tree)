@@ -1,0 +1,60 @@
+package basic;
+
+public class BST {
+	public static  TreeNode root;
+	public BST() {
+		root=null;
+	}
+	public void insertNode(int i) {
+		root=insertRecursive(root,i);
+	}
+	public TreeNode insertRecursive(TreeNode root,int i) {
+		if(root==null) {
+			root=new TreeNode(i);
+			return root;
+		}
+		if(i<root.data) {
+			root.left=insertRecursive(root.left,i);
+		}
+		else if(i>root.data){
+			root.right=insertRecursive(root.right,i);
+		}
+		return root;
+	}
+	void preOrder(TreeNode root) {
+		if(root!=null) {
+			System.out.print(root.data+" ");
+			preOrder(root.left);
+			preOrder(root.right);
+		}
+	}
+	void inOrder(TreeNode root) {
+		if(root!=null) {
+			inOrder(root.left);
+			System.out.print(root.data+" ");
+			inOrder(root.right);
+		}
+	}
+	void postOrder(TreeNode root) {
+		if(root!=null) {
+			postOrder(root.left);
+			postOrder(root.right);
+			System.out.print(root.data+" ");
+		}
+	}
+	public static void main(String args[]) {
+		BST b=new BST();
+		b.insertNode(30);
+		b.insertNode(10);
+		b.insertNode(40);
+		b.insertNode(5);
+		b.insertNode(12);
+		b.insertNode(35);
+		b.insertNode(45);
+		b.preOrder(root);
+		System.out.println();
+		b.inOrder(root);
+		System.out.println();
+		b.postOrder(root);
+	}
+}
